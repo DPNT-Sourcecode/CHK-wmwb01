@@ -91,6 +91,13 @@ public class CheckoutSolution {
     	freeItemOfferList.add(offer);
     	freeItemOfferMap.put("E", freeItemOfferList);
     	
+    	// populate offer of F
+    	offer = new FreeItemOffer("F", 2, "F", 1);
+    	freeItemOfferList = new ArrayList<FreeItemOffer>();
+    	freeItemOfferList.add(offer);
+    	freeItemOfferMap.put("F", freeItemOfferList);
+    	
+
     	return freeItemOfferMap;
     	
     }
@@ -292,6 +299,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
