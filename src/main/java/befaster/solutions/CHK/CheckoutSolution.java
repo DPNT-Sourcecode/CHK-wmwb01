@@ -150,7 +150,7 @@ public class CheckoutSolution {
     						int totalPriceForRemainingFreeItem = 0;
     						
     						if(priceOfferMap.containsKey(freeItemOffer.getFreeItemName()))
-    							totalPriceForRemainingFreeItem = derivePriceFromPriceOfferMap(); // TBD
+    							totalPriceForRemainingFreeItem = derivePriceFromPriceOfferMap(freeItemOffer.getFreeItemName(), 0, freeItemRemainingQuantityForPricing, priceOfferMap, itemPriceTable);
     						else
     							totalPriceForRemainingFreeItem = totalPriceForRemainingFreeItem + itemPriceTable.get(freeItemOffer.getFreeItemName()) * freeItemRemainingQuantityForPricing;
     						
@@ -166,7 +166,7 @@ public class CheckoutSolution {
     		} else if(priceOfferMap.containsKey(item)) {
     			int remainingQuantity = requestedItems.get(item);
     			
-    			totalPrice = derivePriceFromPriceOfferMap(); // TBD
+    			totalPrice = derivePriceFromPriceOfferMap(item, totalPrice, remainingQuantity, priceOfferMap, itemPriceTable);
     			
     		} else {
     			// Take price from price table and multiply with requested quantity
@@ -193,10 +193,17 @@ public class CheckoutSolution {
     	List<PriceOffer> listOfPriceOffers = priceOfferMap.get(item);
     	
     	for(PriceOffer priceOffer : listOfPriceOffers) {
-    		if() {
-    			
+    		
+    		if(remainingQuantity > priceOffer.getQuanity()) {
+    			totalPrice = totalPrice + (remainingQuantity / priceOffer.getQuanity()) * priceOffer.getItemPrice();
+    			remainingQuantity = remainingQuantity % priceOffer.getQuanity();
+    		
+    		} else if (remainingQuantity == priceOffer.getQuanity()) {
+    			totalPrice = totalPrice + priceOffer.getItemPrice();
+    			remainingQuantity = 0;
     		}
     	}
+    	totalPrice = totalPrice + remainingQuantity * itemPriceTable.get(item);
     	
     	return totalPrice;
     }
@@ -283,5 +290,6 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
