@@ -22,12 +22,27 @@ public class CheckoutSolution {
     	return itemPriceTable;
     }
     
+    private HashMap<String,ItemOffer> createItemOfferMap(){
+    	HashMap<String,ItemOffer> itemOfferMap= new HashMap<String,ItemOffer>();
+    	itemOfferMap.put("A", new ItemOffer("A",3,130.0));
+    	itemOfferMap.put("A", new ItemOffer("B",2,45));
+    	return itemOfferMap;
+    	
+    }
+    
     
 }
 class ItemOffer {
 	private String itemName;
 	private int quanity;
 	private double itemPrize;
+	ItemOffer(String itemName,int quantity,double itemPrize){
+		this.itemName = itemName;
+		this.quanity = quantity;
+		this.itemPrize = itemPrize;
+	}
+	
+	
 	public String getItemName() {
 		return itemName;
 	}
@@ -49,7 +64,5 @@ class ItemOffer {
 	
 	
 }
-
-
 
 
