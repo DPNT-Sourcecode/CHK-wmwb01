@@ -48,7 +48,7 @@ public class CheckoutSolution {
     private HashMap<String,ItemOffer> createItemOfferMap(){
     	HashMap<String,ItemOffer> itemOfferMap= new HashMap<String,ItemOffer>();
     	itemOfferMap.put("A", new ItemOffer("A",3,130));
-    	itemOfferMap.put("A", new ItemOffer("B",2,45));
+    	itemOfferMap.put("B", new ItemOffer("B",2,45));
     	return itemOfferMap;
     	
     }
@@ -142,6 +142,7 @@ class ItemOffer {
 	
 	
 }
+
 
 
 
