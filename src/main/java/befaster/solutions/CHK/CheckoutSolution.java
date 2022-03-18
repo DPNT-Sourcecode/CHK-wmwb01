@@ -71,7 +71,8 @@ public class CheckoutSolution {
     				totalPrice = totalPrice + itemOffer.getItemPrice();
     			}else {
     				
-    				
+    				totalPrice = totalPrice + (requestedQuantity % itemOffer.getQuanity())* itemPriceTable.get(item)
+    						+ (requestedQuantity/itemOffer.getQuanity()) * itemOffer.getItemPrice();
     			}
     			
     			
@@ -84,9 +85,6 @@ public class CheckoutSolution {
     		
     		
     	}
-    	
-    	//Calculate Price
-    	
     	
     	
     	return totalPrice;
@@ -127,5 +125,6 @@ class ItemOffer {
 	
 	
 }
+
 
 
