@@ -2,10 +2,10 @@ package befaster.solutions.CHK;
 
 import java.util.HashMap;
 
-import befaster.runner.SolutionNotImplementedException;
-
 public class CheckoutSolution {
     public Integer checkout(String skus) {
+    	//Build Requested Items
+    	HashMap<Character,Integer> requestedItems = buildRequestedItemMap(skus);
     	//Populate Item Price
     	HashMap<String,Integer> itemPriceTable =  createItemPriceTable();
     	//Populate Item offers
@@ -36,11 +36,9 @@ public class CheckoutSolution {
     	
     }
     
-    private Integer calculateTotalPrice(String items, HashMap<String,Double> itemPriceTable, HashMap<String,ItemOffer> 
-    itemOfferTable) {
-    	
+    private HashMap<Character,Integer> buildRequestedItemMap(String items){
     	HashMap<Character,Integer> requestedItems = new HashMap<Character,Integer>();
-    	Integer totalPrice = 0;
+    	
     	//Create list of items and quantities requested
     	char[] itemArray = items.toCharArray();
     	for(char item: itemArray) {
@@ -50,9 +48,20 @@ public class CheckoutSolution {
     			quantity++;
     		}
     		requestedItems.put(item, quantity);
-    			
     		
     	}
+    	return requestedItems;
+    }
+    
+    
+    private Integer calculateTotalPrice(HashMap<Character,Integer> requestedItems, HashMap<String,Double> itemPriceTable, HashMap<String,ItemOffer> 
+    itemOfferTable) {
+    	
+    	int totalPrice = 0;
+    	
+    	//Calculate Price
+    	
+    	
     	
     	return totalPrice;
     	
@@ -92,6 +101,7 @@ class ItemOffer {
 	
 	
 }
+
 
 
 
