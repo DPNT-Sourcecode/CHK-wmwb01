@@ -6,17 +6,23 @@ import befaster.runner.SolutionNotImplementedException;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-    	HashMap<String,Double> itemPriceTable =  createItemPriceTable();
+    	//Populate Item Price
+    	HashMap<String,Integer> itemPriceTable =  createItemPriceTable();
+    	//Populate Item offers
+    	HashMap<String,ItemOffer> itemOffers = createItemOfferMap();
+    	
+    	
+    	
     	
     	return 0;
     }
     
-    private HashMap<String,Double> createItemPriceTable(){
-    	HashMap<String,Double> itemPriceTable = new HashMap<String,Double>();
-    	itemPriceTable.put("A", 50.0);
-    	itemPriceTable.put("B", 30.0);
-    	itemPriceTable.put("C", 20.0);
-    	itemPriceTable.put("D", 15.0);
+    private HashMap<String,Integer> createItemPriceTable(){
+    	HashMap<String,Integer> itemPriceTable = new HashMap<String,Integer>();
+    	itemPriceTable.put("A", 50);
+    	itemPriceTable.put("B", 30);
+    	itemPriceTable.put("C", 20);
+    	itemPriceTable.put("D", 15);
     	
     	
     	return itemPriceTable;
@@ -24,9 +30,19 @@ public class CheckoutSolution {
     
     private HashMap<String,ItemOffer> createItemOfferMap(){
     	HashMap<String,ItemOffer> itemOfferMap= new HashMap<String,ItemOffer>();
-    	itemOfferMap.put("A", new ItemOffer("A",3,130.0));
+    	itemOfferMap.put("A", new ItemOffer("A",3,130));
     	itemOfferMap.put("A", new ItemOffer("B",2,45));
     	return itemOfferMap;
+    	
+    }
+    
+    private Integer calculateTotalPrice(String items, HashMap<String,Double> itemPriceTable, HashMap<String,ItemOffer> 
+    itemOfferTable) {
+    	
+    	Integer totalPrice = 0;
+    	//Create list of items and quantities requested
+    	
+    	return totalPrice;
     	
     }
     
@@ -35,11 +51,11 @@ public class CheckoutSolution {
 class ItemOffer {
 	private String itemName;
 	private int quanity;
-	private double itemPrize;
-	ItemOffer(String itemName,int quantity,double itemPrize){
+	private Integer itemPrice;
+	ItemOffer(String itemName,int quantity,Integer itemPrice){
 		this.itemName = itemName;
 		this.quanity = quantity;
-		this.itemPrize = itemPrize;
+		this.itemPrice = itemPrice;
 	}
 	
 	
@@ -55,14 +71,15 @@ class ItemOffer {
 	public void setQuanity(int quanity) {
 		this.quanity = quanity;
 	}
-	public double getItemPrize() {
-		return itemPrize;
+	public double getItemPrice() {
+		return itemPrice;
 	}
-	public void setItemPrize(double itemPrize) {
-		this.itemPrize = itemPrize;
+	public void setItemPrize(Integer itemPrice) {
+		this.itemPrice = itemPrice;
 	}
 	
 	
 }
+
 
 
