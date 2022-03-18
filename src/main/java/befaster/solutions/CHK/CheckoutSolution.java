@@ -21,7 +21,35 @@ public class CheckoutSolution {
     	
     	return itemPriceTable;
     }
+    
+    
 }
+class ItemOffer {
+	private String itemName;
+	private int quanity;
+	private double itemPrize;
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	public int getQuanity() {
+		return quanity;
+	}
+	public void setQuanity(int quanity) {
+		this.quanity = quanity;
+	}
+	public double getItemPrize() {
+		return itemPrize;
+	}
+	public void setItemPrize(double itemPrize) {
+		this.itemPrize = itemPrize;
+	}
+	
+	
+}
+
 
 
 
