@@ -114,37 +114,76 @@ public class CheckoutSolution {
     private Integer calculateTotalPrice(HashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, 
     		HashMap<String, List<PriceOffer>> priceOfferMap, HashMap<String, List<FreeItemOffer>> freeItemOfferMap) {
     	
-    	int totalPrice = 0;
+    	HashMap<String, Integer> itemWiseTotalPrice = new HashMap<String, Integer>();
+    	int totalItemPrice = 0;
+    	
+    	// Iterate through requestedItems
     	for (String item : requestedItems.keySet()) {
+    		int totalPrice = 0;
+    		
     		//Take requested quantity
     		int requestedQuantity = requestedItems.get(item);
-    		//Check if item available in offer
-    		if(itemOfferTable.containsKey(item)) {
-    			ItemOffer itemOffer = itemOfferTable.get(item);
-    			//If requested quantity is less than offer quantity, actual price will apply
-    			if(requestedQuantity <  itemOffer.getQuanity()) {
-    				totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
-    			} else if(requestedQuantity == itemOffer.getQuanity()) {
-    				totalPrice = totalPrice + itemOffer.getItemPrice();
-    			}else {
-    				
-    				totalPrice = totalPrice + (requestedQuantity % itemOffer.getQuanity())* itemPriceTable.get(item)
-    						+ (requestedQuantity/itemOffer.getQuanity()) * itemOffer.getItemPrice();
-    			}
+    		
+    		// If there is free item on requested item
+    		if (freeItemOfferMap.containsKey(item)) {
+    			// Get list of freeItemOffers
+    			List<FreeItemOffer> listOfFreeItemOffers = freeItemOfferMap.get(item);
     			
+    			// List should be added in sorted order of quantity, for now it will be one only as per example
+    			for (FreeItemOffer freeItemOffer : listOfFreeItemOffers) {
+    				
+    				// How many free items we will get, if for 2E 1B is free, for 5E it should be 2B
+    				
+    				int freeItemQuantity = (requestedQuantity / freeItemOffer.getQuantity()) * freeItemOffer.getFreeItemQuantity();
+    				if(freeItemQuantity > 0) {
+    					// Adjust free items as per logic below in requestedItems
+    					if(requestedItems.get(freeItemOffer.getFreeItemName()) != null) {
+    						int freeItemRequestedQuantity = requestedItems.get(freeItemOffer.getFreeItemName());
+    						int freeItemRemainingQuantityForPricing = 0;
+    						
+    						if(freeItemRequestedQuantity > freeItemQuantity) 
+    							freeItemRemainingQuantityForPricing = freeItemRequestedQuantity - freeItemQuantity;
+    						else
+    							freeItemRemainingQuantityForPricing = 0;
+    						
+    						requestedItems.put(freeItemOffer.getFreeItemName(), freeItemRemainingQuantityForPricing);
+    						int totalPriceForRemainingFreeItem = 0;
+    						
+    						if(priceOfferMap.containsKey(freeItemOffer.getFreeItemName()))
+    							totalPriceForRemainingFreeItem = 0; // TBD
+    						else
+    							totalPriceForRemainingFreeItem = totalPriceForRemainingFreeItem + itemPriceTable.get(freeItemOffer.getFreeItemName()) * freeItemRemainingQuantityForPricing;
+    						
+    						itemWiseTotalPrice.put(freeItemOffer.getFreeItemName(), totalPriceForRemainingFreeItem);
+    								
+    					}
+    				}
+    				
+    			}
+    			// Take price from price table and multiply with requested quantity
+    			totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
+    			
+    		} else if(priceOfferMap.containsKey(item)) {
+    			int remainingQuantity = requestedItems.get(item);
+    			
+    			totalPrice = 0; // TBD
     			
     		} else {
-    			//Take price from price table and multiply with requested quantity
-    		    totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
-    			
+    			// Take price from price table and multiply with requested quantity
+    			totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
     		}
     		
-    		
+    		itemWiseTotalPrice.put(item, totalPrice);    		
     		
     	}
     	
+    	for (String item : itemWiseTotalPrice.keySet()) {
+    		
+    		totalItemPrice = totalItemPrice + itemWiseTotalPrice.get(item); 
+    	}
     	
-    	return totalPrice;
+    	
+    	return totalItemPrice;
     	
     }
     
@@ -230,5 +269,6 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
