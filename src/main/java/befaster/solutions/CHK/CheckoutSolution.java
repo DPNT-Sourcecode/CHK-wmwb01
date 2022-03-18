@@ -48,6 +48,8 @@ public class CheckoutSolution {
     	itemPriceTable.put("C", 20);
     	itemPriceTable.put("D", 15);
     	itemPriceTable.put("E", 40);
+    	itemPriceTable.put("F", 10);
+    	
     	
     	
     	return itemPriceTable;
@@ -290,6 +292,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
