@@ -4,21 +4,32 @@ import java.util.HashMap;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
+    	
+    	
     	//Build Requested Items
     	HashMap<String,Integer> requestedItems = buildRequestedItemMap(skus);
     	//Populate Item Price
     	HashMap<String,Integer> itemPriceTable =  createItemPriceTable();
+    	
+    	if(!validateInput(requestedItems, itemPriceTable))
+    		return -1;
     	//Populate Item offers
     	HashMap<String,ItemOffer> itemOffers = createItemOfferMap();
-    	
-    	
-    	
-    	
-    	return 0;
+    	Integer totalPrice = calculateTotalPrice(requestedItems, itemPriceTable, itemOffers);
+    	return totalPrice;
     }
     
     private boolean validateInput(HashMap<String,Integer> requestedItems,HashMap<String,Integer> itemPriceTable) {
     	boolean isValid = true;
+    	
+    	for (String item : requestedItems.keySet()) {
+    		if(!itemPriceTable.containsKey(item)) {
+    			isValid = false;
+    			break;
+    		}
+    		
+    	}
+    	
     	return isValid;
     	
     }
@@ -131,6 +142,7 @@ class ItemOffer {
 	
 	
 }
+
 
 
 
