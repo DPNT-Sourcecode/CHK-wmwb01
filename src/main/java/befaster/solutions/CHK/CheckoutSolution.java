@@ -1,6 +1,8 @@
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
@@ -10,11 +12,17 @@ public class CheckoutSolution {
     	//Populate Item Price
     	HashMap<String,Integer> itemPriceTable =  createItemPriceTable();
     	
+    	// Validate Input
     	if(!validateInput(requestedItems, itemPriceTable))
     		return -1;
+    	
     	//Populate Item offers
-    	HashMap<String,ItemOffer> itemOffers = createItemOfferMap();
-    	Integer totalPrice = calculateTotalPrice(requestedItems, itemPriceTable, itemOffers);
+    	HashMap<String, List<PriceOffer>> priceOfferMap = createPriceOfferMap();
+    	HashMap<String, List<FreeItemOffer>> freeItemOfferMap = createFreeItemOfferMap();
+    	
+    	// Calculate total price
+    	Integer totalPrice = calculateTotalPrice(requestedItems, itemPriceTable, priceOfferMap, freeItemOfferMap);
+    	
     	return totalPrice;
     }
     
@@ -39,16 +47,49 @@ public class CheckoutSolution {
     	itemPriceTable.put("B", 30);
     	itemPriceTable.put("C", 20);
     	itemPriceTable.put("D", 15);
+    	itemPriceTable.put("E", 40);
     	
     	
     	return itemPriceTable;
     }
     
-    private HashMap<String,ItemOffer> createItemOfferMap(){
-    	HashMap<String,ItemOffer> itemOfferMap= new HashMap<String,ItemOffer>();
-    	itemOfferMap.put("A", new ItemOffer("A",3,130));
-    	itemOfferMap.put("B", new ItemOffer("B",2,45));
-    	return itemOfferMap;
+    private HashMap<String,List<PriceOffer>> createPriceOfferMap(){
+    	
+    	HashMap<String, List<PriceOffer>> priceOfferMap = new HashMap<String, List<PriceOffer>>();
+    	
+    	// populate offers of A
+    	PriceOffer offer1 = new PriceOffer("A",5,200);
+    	PriceOffer offer2 = new PriceOffer("A",3,130);
+    	
+    	List<PriceOffer> priceOfferList = new ArrayList<PriceOffer>();
+    	priceOfferList.add(offer1);
+    	priceOfferList.add(offer2);
+    	
+    	priceOfferMap.put("A", priceOfferList);
+    	
+    	// populate offers of B
+    	priceOfferList = new ArrayList<PriceOffer>();
+    	offer1 = new PriceOffer("B", 2, 45);
+    	priceOfferList.add(offer1);
+    	priceOfferMap.put("B", priceOfferList);
+    	    	
+    	
+    	return priceOfferMap;
+    	
+    }
+    
+    
+    private HashMap<String,List<FreeItemOffer>> createFreeItemOfferMap(){
+    	
+    	// populate offer of E
+    	HashMap<String, List<FreeItemOffer>> freeItemOfferMap = new HashMap<String, List<FreeItemOffer>>();
+    	
+    	FreeItemOffer offer = new FreeItemOffer("E", 2, "B", 1);
+    	List<FreeItemOffer> freeItemOfferList = new ArrayList<FreeItemOffer>();
+    	freeItemOfferList.add(offer);
+    	freeItemOfferMap.put("E", freeItemOfferList);
+    	
+    	return freeItemOfferMap;
     	
     }
     
@@ -189,6 +230,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
