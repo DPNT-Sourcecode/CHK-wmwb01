@@ -17,7 +17,9 @@ public class CheckoutSolution {
     	return 0;
     }
     
-    private validateInput(HashMap<String,Integer> requestedItems,HashMap<String,Integer> itemPriceTable) {
+    private boolean validateInput(HashMap<String,Integer> requestedItems,HashMap<String,Integer> itemPriceTable) {
+    	boolean isValid = true;
+    	return isValid;
     	
     }
     
@@ -51,7 +53,7 @@ public class CheckoutSolution {
     			quantity = requestedItems.get(item);
     			quantity++;
     		}
-    		requestedItems.put(item, quantity);
+    		requestedItems.put(Character.toString(item), quantity);
     		
     	}
     	return requestedItems;
@@ -129,6 +131,7 @@ class ItemOffer {
 	
 	
 }
+
 
 
 
