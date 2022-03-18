@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class CheckoutSolution {
     public Integer checkout(String skus) {
     	//Build Requested Items
-    	HashMap<Character,Integer> requestedItems = buildRequestedItemMap(skus);
+    	HashMap<String,Integer> requestedItems = buildRequestedItemMap(skus);
     	//Populate Item Price
     	HashMap<String,Integer> itemPriceTable =  createItemPriceTable();
     	//Populate Item offers
@@ -15,6 +15,10 @@ public class CheckoutSolution {
     	
     	
     	return 0;
+    }
+    
+    private validateInput(HashMap<String,Integer> requestedItems,HashMap<String,Integer> itemPriceTable) {
+    	
     }
     
     private HashMap<String,Integer> createItemPriceTable(){
@@ -36,8 +40,8 @@ public class CheckoutSolution {
     	
     }
     
-    private HashMap<Character,Integer> buildRequestedItemMap(String items){
-    	HashMap<Character,Integer> requestedItems = new HashMap<Character,Integer>();
+    private HashMap<String,Integer> buildRequestedItemMap(String items){
+    	HashMap<String,Integer> requestedItems = new HashMap<String,Integer>();
     	
     	//Create list of items and quantities requested
     	char[] itemArray = items.toCharArray();
@@ -54,11 +58,11 @@ public class CheckoutSolution {
     }
     
     
-    private Integer calculateTotalPrice(HashMap<Character,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, HashMap<String,ItemOffer> 
+    private Integer calculateTotalPrice(HashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, HashMap<String,ItemOffer> 
     itemOfferTable) {
     	
     	int totalPrice = 0;
-    	for (Character item : requestedItems.keySet()) {
+    	for (String item : requestedItems.keySet()) {
     		//Take requested quantity
     		int requestedQuantity = requestedItems.get(item);
     		//Check if item available in offer
@@ -125,6 +129,7 @@ class ItemOffer {
 	
 	
 }
+
 
 
 
