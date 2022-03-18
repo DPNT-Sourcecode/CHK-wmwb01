@@ -54,10 +54,36 @@ public class CheckoutSolution {
     }
     
     
-    private Integer calculateTotalPrice(HashMap<Character,Integer> requestedItems, HashMap<String,Double> itemPriceTable, HashMap<String,ItemOffer> 
+    private Integer calculateTotalPrice(HashMap<Character,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, HashMap<String,ItemOffer> 
     itemOfferTable) {
     	
     	int totalPrice = 0;
+    	for (Character item : requestedItems.keySet()) {
+    		//Take requested quantity
+    		int requestedQuantity = requestedItems.get(item);
+    		//Check if item available in offer
+    		if(itemOfferTable.containsKey(item)) {
+    			ItemOffer itemOffer = itemOfferTable.get(item);
+    			//If requested quantity is less than offer quantity, actual price will apply
+    			if(requestedQuantity <  itemOffer.getQuanity()) {
+    				totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
+    			} else if(requestedQuantity == itemOffer.getQuanity()) {
+    				totalPrice = totalPrice + itemOffer.getItemPrice();
+    			}else {
+    				
+    				
+    			}
+    			
+    			
+    		} else {
+    			//Take price from price table and multiply with requested quantity
+    		    totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
+    			
+    		}
+    		
+    		
+    		
+    	}
     	
     	//Calculate Price
     	
@@ -92,7 +118,7 @@ class ItemOffer {
 	public void setQuanity(int quanity) {
 		this.quanity = quanity;
 	}
-	public double getItemPrice() {
+	public Integer getItemPrice() {
 		return itemPrice;
 	}
 	public void setItemPrize(Integer itemPrice) {
@@ -101,8 +127,5 @@ class ItemOffer {
 	
 	
 }
-
-
-
 
 
