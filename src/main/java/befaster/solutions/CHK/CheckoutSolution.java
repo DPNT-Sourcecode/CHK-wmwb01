@@ -39,8 +39,20 @@ public class CheckoutSolution {
     private Integer calculateTotalPrice(String items, HashMap<String,Double> itemPriceTable, HashMap<String,ItemOffer> 
     itemOfferTable) {
     	
+    	HashMap<Character,Integer> requestedItems = new HashMap<Character,Integer>();
     	Integer totalPrice = 0;
     	//Create list of items and quantities requested
+    	char[] itemArray = items.toCharArray();
+    	for(char item: itemArray) {
+    		int quantity = 1;
+    		if(requestedItems.containsKey(item)) {
+    			quantity = requestedItems.get(item);
+    			quantity++;
+    		}
+    		requestedItems.put(item, quantity);
+    			
+    		
+    	}
     	
     	return totalPrice;
     	
@@ -80,6 +92,7 @@ class ItemOffer {
 	
 	
 }
+
 
 
 
