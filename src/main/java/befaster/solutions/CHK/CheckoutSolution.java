@@ -111,8 +111,8 @@ public class CheckoutSolution {
     }
     
     
-    private Integer calculateTotalPrice(HashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, HashMap<String,ItemOffer> 
-    itemOfferTable) {
+    private Integer calculateTotalPrice(HashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, 
+    		HashMap<String, List<PriceOffer>> priceOfferMap, HashMap<String, List<FreeItemOffer>> freeItemOfferMap) {
     	
     	int totalPrice = 0;
     	for (String item : requestedItems.keySet()) {
@@ -230,7 +230,5 @@ class FreeItemOffer {
 	
 	
 }
-
-
 
 
