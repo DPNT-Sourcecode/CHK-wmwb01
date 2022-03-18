@@ -60,8 +60,8 @@ public class CheckoutSolution {
     	char[] itemArray = items.toCharArray();
     	for(char item: itemArray) {
     		int quantity = 1;
-    		if(requestedItems.containsKey(item)) {
-    			quantity = requestedItems.get(item);
+    		if(requestedItems.containsKey(Character.toString(item))) {
+    			quantity = requestedItems.get(Character.toString(item));
     			quantity++;
     		}
     		requestedItems.put(Character.toString(item), quantity);
@@ -142,10 +142,5 @@ class ItemOffer {
 	
 	
 }
-
-
-
-
-
 
 
