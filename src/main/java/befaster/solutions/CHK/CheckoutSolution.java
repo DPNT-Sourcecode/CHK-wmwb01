@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class CheckoutSolution {
     public Integer checkout(String skus) {
     	
-    	
     	//Build Requested Items
     	HashMap<String,Integer> requestedItems = buildRequestedItemMap(skus);
     	//Populate Item Price
@@ -110,11 +109,12 @@ public class CheckoutSolution {
     
     
 }
-class ItemOffer {
+class PriceOffer {
 	private String itemName;
 	private int quanity;
 	private Integer itemPrice;
-	ItemOffer(String itemName,int quantity,Integer itemPrice){
+	
+	PriceOffer(String itemName,int quantity,Integer itemPrice){
 		this.itemName = itemName;
 		this.quanity = quantity;
 		this.itemPrice = itemPrice;
@@ -139,8 +139,56 @@ class ItemOffer {
 	public void setItemPrize(Integer itemPrice) {
 		this.itemPrice = itemPrice;
 	}
+		
+}
+
+class FreeItemOffer {
+	private String itemName;
+	private int quantity;
+	private String freeItemName;
+	private int freeItemQuantity;
+	
+	FreeItemOffer(String itemName, int quantity, String freeItemName, int freeItemQuantity){
+		this.itemName = itemName;
+		this.quantity = quantity;
+		this.freeItemName = freeItemName;
+		this.freeItemQuantity = freeItemQuantity;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getFreeItemName() {
+		return freeItemName;
+	}
+
+	public void setFreeItemName(String freeItemName) {
+		this.freeItemName = freeItemName;
+	}
+
+	public int getFreeItemQuantity() {
+		return freeItemQuantity;
+	}
+
+	public void setFreeItemQuantity(int freeItemQuantity) {
+		this.freeItemQuantity = freeItemQuantity;
+	}
 	
 	
 }
+
 
 
