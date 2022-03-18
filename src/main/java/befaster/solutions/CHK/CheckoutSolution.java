@@ -150,7 +150,7 @@ public class CheckoutSolution {
     						int totalPriceForRemainingFreeItem = 0;
     						
     						if(priceOfferMap.containsKey(freeItemOffer.getFreeItemName()))
-    							totalPriceForRemainingFreeItem = 0; // TBD
+    							totalPriceForRemainingFreeItem = derivePriceFromPriceOfferMap(); // TBD
     						else
     							totalPriceForRemainingFreeItem = totalPriceForRemainingFreeItem + itemPriceTable.get(freeItemOffer.getFreeItemName()) * freeItemRemainingQuantityForPricing;
     						
@@ -166,7 +166,7 @@ public class CheckoutSolution {
     		} else if(priceOfferMap.containsKey(item)) {
     			int remainingQuantity = requestedItems.get(item);
     			
-    			totalPrice = 0; // TBD
+    			totalPrice = derivePriceFromPriceOfferMap(); // TBD
     			
     		} else {
     			// Take price from price table and multiply with requested quantity
@@ -185,6 +185,20 @@ public class CheckoutSolution {
     	
     	return totalItemPrice;
     	
+    }
+    
+    private Integer derivePriceFromPriceOfferMap(String item, Integer totalPrice, int remainingQuantity, 
+    		HashMap<String, List<PriceOffer>> priceOfferMap, HashMap<String, Integer> itemPriceTable) {
+    
+    	List<PriceOffer> listOfPriceOffers = priceOfferMap.get(item);
+    	
+    	for(PriceOffer priceOffer : listOfPriceOffers) {
+    		if() {
+    			
+    		}
+    	}
+    	
+    	return totalPrice;
     }
     
     
@@ -269,6 +283,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
