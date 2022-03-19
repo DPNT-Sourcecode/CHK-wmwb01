@@ -101,9 +101,33 @@ public class CheckoutSolution {
     	
     	//populate more offers
     	priceOfferList = new ArrayList<PriceOffer>();
-    	offer1 = new PriceOffer("H", 5, 45);
+    	offer1 = new PriceOffer("H", 10, 80);
+    	offer2 = new PriceOffer("H",5,45);
     	priceOfferList.add(offer1);
+    	priceOfferList.add(offer2);
     	priceOfferMap.put("H", priceOfferList);
+    	
+    	priceOfferList = new ArrayList<PriceOffer>();
+    	offer1 = new PriceOffer("K", 2, 150);
+    	priceOfferList.add(offer1);
+    	priceOfferMap.put("K", priceOfferList);
+    	
+    	priceOfferList = new ArrayList<PriceOffer>();
+    	offer1 = new PriceOffer("P", 5, 200);
+    	priceOfferList.add(offer1);
+    	priceOfferMap.put("P", priceOfferList);
+    	
+    	priceOfferList = new ArrayList<PriceOffer>();
+    	offer1 = new PriceOffer("Q", 3, 80);
+    	priceOfferList.add(offer1);
+    	priceOfferMap.put("Q", priceOfferList);
+    	
+    	priceOfferList = new ArrayList<PriceOffer>();
+    	offer1 = new PriceOffer("V", 3, 130);
+    	offer2 = new PriceOffer("V",2,90);
+    	priceOfferList.add(offer1);
+    	priceOfferList.add(offer2);
+    	priceOfferMap.put("V", priceOfferList);
     	
     	    	
     	
@@ -350,6 +374,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
