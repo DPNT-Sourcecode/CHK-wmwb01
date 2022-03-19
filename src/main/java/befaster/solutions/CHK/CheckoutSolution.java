@@ -51,26 +51,26 @@ public class CheckoutSolution {
     	itemPriceTable.put("F", 10);
     	
     	//Add more items
-    	itemPriceTable.put("G", 10);
+    	itemPriceTable.put("G", 20);
     	itemPriceTable.put("H", 10);
-    	itemPriceTable.put("I", 10);
-    	itemPriceTable.put("J", 10);
-    	itemPriceTable.put("K", 10);
-    	itemPriceTable.put("L", 10);
-    	itemPriceTable.put("M", 10);
-    	itemPriceTable.put("N", 10);
+    	itemPriceTable.put("I", 35);
+    	itemPriceTable.put("J", 60);
+    	itemPriceTable.put("K", 80);
+    	itemPriceTable.put("L", 90);
+    	itemPriceTable.put("M", 15);
+    	itemPriceTable.put("N", 40);
     	itemPriceTable.put("O", 10);
-    	itemPriceTable.put("P", 10);
-    	itemPriceTable.put("Q", 10);
-    	itemPriceTable.put("R", 10);
-    	itemPriceTable.put("S", 10);
-    	itemPriceTable.put("T", 10);
-    	itemPriceTable.put("U", 10);
-    	itemPriceTable.put("V", 10);
-    	itemPriceTable.put("W", 10);
-    	itemPriceTable.put("X", 10);
+    	itemPriceTable.put("P", 50);
+    	itemPriceTable.put("Q", 30);
+    	itemPriceTable.put("R", 50);
+    	itemPriceTable.put("S", 30);
+    	itemPriceTable.put("T", 20);
+    	itemPriceTable.put("U", 40);
+    	itemPriceTable.put("V", 50);
+    	itemPriceTable.put("W", 20);
+    	itemPriceTable.put("X", 90);
     	itemPriceTable.put("Y", 10);
-    	itemPriceTable.put("Z", 10);
+    	itemPriceTable.put("Z", 50);
     	
     	
     	
@@ -98,6 +98,13 @@ public class CheckoutSolution {
     	offer1 = new PriceOffer("B", 2, 45);
     	priceOfferList.add(offer1);
     	priceOfferMap.put("B", priceOfferList);
+    	
+    	//populate more offers
+    	priceOfferList = new ArrayList<PriceOffer>();
+    	offer1 = new PriceOffer("H", 5, 45);
+    	priceOfferList.add(offer1);
+    	priceOfferMap.put("H", priceOfferList);
+    	
     	    	
     	
     	return priceOfferMap;
@@ -343,5 +350,6 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
