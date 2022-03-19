@@ -55,7 +55,7 @@ public class CheckoutSolution {
     	itemPriceTable.put("H", 10);
     	itemPriceTable.put("I", 35);
     	itemPriceTable.put("J", 60);
-    	itemPriceTable.put("K", 80);
+    	itemPriceTable.put("K", 70);
     	itemPriceTable.put("L", 90);
     	itemPriceTable.put("M", 15);
     	itemPriceTable.put("N", 40);
@@ -63,14 +63,14 @@ public class CheckoutSolution {
     	itemPriceTable.put("P", 50);
     	itemPriceTable.put("Q", 30);
     	itemPriceTable.put("R", 50);
-    	itemPriceTable.put("S", 30);
+    	itemPriceTable.put("S", 20);
     	itemPriceTable.put("T", 20);
     	itemPriceTable.put("U", 40);
     	itemPriceTable.put("V", 50);
     	itemPriceTable.put("W", 20);
-    	itemPriceTable.put("X", 90);
-    	itemPriceTable.put("Y", 10);
-    	itemPriceTable.put("Z", 50);
+    	itemPriceTable.put("X", 17);
+    	itemPriceTable.put("Y", 20);
+    	itemPriceTable.put("Z", 21);
     	
     	
     	
@@ -389,8 +389,5 @@ class FreeItemOffer {
 	
 	
 }
-
-
-
 
 
