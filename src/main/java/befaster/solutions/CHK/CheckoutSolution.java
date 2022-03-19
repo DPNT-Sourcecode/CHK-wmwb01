@@ -108,7 +108,7 @@ public class CheckoutSolution {
     	priceOfferMap.put("H", priceOfferList);
     	
     	priceOfferList = new ArrayList<PriceOffer>();
-    	offer1 = new PriceOffer("K", 2, 150);
+    	offer1 = new PriceOffer("K", 2, 120);
     	priceOfferList.add(offer1);
     	priceOfferMap.put("K", priceOfferList);
     	
@@ -389,5 +389,6 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
