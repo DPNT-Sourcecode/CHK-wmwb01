@@ -143,7 +143,7 @@ public class CheckoutSolution {
     				int freeItemRemainingQuantityForPricing = 0;
     				int totalPriceForRemainingFreeItem = 0;
     				//If free item is the same as requested items
-    				if(freeItemOffer.getItemName().equalsIgnoreCase(item)) {
+    				if(freeItemOffer.getFreeItemName().equalsIgnoreCase(item)) {
     					
     					//build logic for same item free
     					if(requestedQuantity > (freeItemOffer.getQuantity() + freeItemOffer.getFreeItemQuantity())) {
@@ -319,6 +319,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
