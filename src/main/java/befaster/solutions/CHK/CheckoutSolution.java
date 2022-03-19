@@ -185,10 +185,11 @@ public class CheckoutSolution {
 	    								
 	    					}
 	    				}
+	    				// Take price from price table and multiply with requested quantity
+		    			totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
 	    				
 	    			}
-	    			// Take price from price table and multiply with requested quantity
-	    			totalPrice = totalPrice + itemPriceTable.get(item) * requestedQuantity;
+	    			
     			}
     			
     		} else if(priceOfferMap.containsKey(item)) {
@@ -318,6 +319,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
