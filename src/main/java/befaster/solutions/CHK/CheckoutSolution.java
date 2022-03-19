@@ -50,6 +50,30 @@ public class CheckoutSolution {
     	itemPriceTable.put("E", 40);
     	itemPriceTable.put("F", 10);
     	
+    	//Add more items
+    	itemPriceTable.put("G", 10);
+    	itemPriceTable.put("H", 10);
+    	itemPriceTable.put("I", 10);
+    	itemPriceTable.put("J", 10);
+    	itemPriceTable.put("K", 10);
+    	itemPriceTable.put("L", 10);
+    	itemPriceTable.put("M", 10);
+    	itemPriceTable.put("N", 10);
+    	itemPriceTable.put("O", 10);
+    	itemPriceTable.put("P", 10);
+    	itemPriceTable.put("Q", 10);
+    	itemPriceTable.put("R", 10);
+    	itemPriceTable.put("S", 10);
+    	itemPriceTable.put("T", 10);
+    	itemPriceTable.put("U", 10);
+    	itemPriceTable.put("V", 10);
+    	itemPriceTable.put("W", 10);
+    	itemPriceTable.put("X", 10);
+    	itemPriceTable.put("Y", 10);
+    	itemPriceTable.put("Z", 10);
+    	
+    	
+    	
     	
     	
     	return itemPriceTable;
@@ -319,10 +343,5 @@ class FreeItemOffer {
 	
 	
 }
-
-
-
-
-
 
 
