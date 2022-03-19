@@ -147,15 +147,15 @@ public class CheckoutSolution {
     					
     					//build logic for same item free
     					if(requestedQuantity > (freeItemOffer.getQuantity() + freeItemOffer.getFreeItemQuantity())) {
-    						
-    						
+    						int freeItems = (requestedQuantity/(freeItemOffer.getQuantity() + freeItemOffer.getFreeItemQuantity())) * freeItemOffer.getFreeItemQuantity();
+    						freeItemRemainingQuantityForPricing = requestedQuantity - freeItems;
     					} else if(requestedQuantity == (freeItemOffer.getQuantity() + freeItemOffer.getFreeItemQuantity())) {
-    						
+    						freeItemRemainingQuantityForPricing = freeItemOffer.getQuantity();
     						
     					} else {
-    						
+    						freeItemRemainingQuantityForPricing = requestedQuantity;
     					}
-    					
+    					totalPrice = totalPrice + itemPriceTable.get(freeItemOffer.getItemName()) * freeItemRemainingQuantityForPricing;
     					
     				} else {
     				
@@ -318,6 +318,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
