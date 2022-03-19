@@ -152,6 +152,21 @@ public class CheckoutSolution {
     	freeItemOfferList.add(offer);
     	freeItemOfferMap.put("F", freeItemOfferList);
     	
+    	offer = new FreeItemOffer("N", 3, "M", 1);
+    	freeItemOfferList = new ArrayList<FreeItemOffer>();
+    	freeItemOfferList.add(offer);
+    	freeItemOfferMap.put("N", freeItemOfferList);
+    	
+    	offer = new FreeItemOffer("R", 3, "Q", 1);
+    	freeItemOfferList = new ArrayList<FreeItemOffer>();
+    	freeItemOfferList.add(offer);
+    	freeItemOfferMap.put("R", freeItemOfferList);
+    	
+    	offer = new FreeItemOffer("U", 3, "U", 1);
+    	freeItemOfferList = new ArrayList<FreeItemOffer>();
+    	freeItemOfferList.add(offer);
+    	freeItemOfferMap.put("U", freeItemOfferList);
+    	
 
     	return freeItemOfferMap;
     	
@@ -374,6 +389,7 @@ class FreeItemOffer {
 	
 	
 }
+
 
 
 
