@@ -445,7 +445,7 @@ class ComboOffer {
 	
 }
 
-class ComboOfferItem {
+class ComboOfferItem implements Comparable<ComboOfferItem>{
 	
 	private String itemName;
 	private int itemQuantity;
@@ -477,8 +477,15 @@ class ComboOfferItem {
 		this.itemPrice = itemPrice;
 	}
 	
+	@Override
+	public int compareTo(ComboOfferItem comboOfferItem) {
+		//Sort list as per descending price of combo items
+		return comboOfferItem.getItemPrice() - itemPrice;
+	}
+	
 	
 }
+
 
 
 
