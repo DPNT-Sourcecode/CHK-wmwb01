@@ -28,7 +28,7 @@ public class CheckoutSolution {
     	
     	// Calculate total price
     	Integer totalPrice = calculateTotalPrice(requestedItems, itemPriceTable, priceOfferMap, freeItemOfferMap);
-    	totalPrice = totalPrice + calcuatePriceForComboItems(comboOffer, comboOfferItemList, totalPrice, itemPriceTable);
+    	totalPrice = calcuatePriceForComboItems(comboOffer, comboOfferItemList, totalPrice, itemPriceTable);
     	
     	return totalPrice;
     }
@@ -524,6 +524,7 @@ class ComboOfferItem implements Comparable<ComboOfferItem>{
 	
 	
 }
+
 
 
 
