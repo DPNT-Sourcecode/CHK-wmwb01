@@ -390,4 +390,39 @@ class FreeItemOffer {
 	
 }
 
+class ComboOffer {
+	
+	private String comboItems;
+	private int comboItemQuantity;
+	private Integer comboItemPrice;
+	
+	
+	public ComboOffer(String comboItems, int comboItemQuantity, Integer comboItemPrice) {
+		super();
+		this.comboItems = comboItems;
+		this.comboItemQuantity = comboItemQuantity;
+		this.comboItemPrice = comboItemPrice;
+	}
+	public String getComboItems() {
+		return comboItems;
+	}
+	public void setComboItems(String comboItems) {
+		this.comboItems = comboItems;
+	}
+	public int getComboItemQuantity() {
+		return comboItemQuantity;
+	}
+	public void setComboItemQuantity(int comboItemQuantity) {
+		this.comboItemQuantity = comboItemQuantity;
+	}
+	public Integer getComboItemPrice() {
+		return comboItemPrice;
+	}
+	public void setComboItemPrice(Integer comboItemPrice) {
+		this.comboItemPrice = comboItemPrice;
+	}
+	
+}
+
+
 
