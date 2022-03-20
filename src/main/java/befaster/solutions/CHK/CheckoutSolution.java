@@ -3,12 +3,13 @@ package befaster.solutions.CHK;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
     	
     	//Build Requested Items
-    	HashMap<String,Integer> requestedItems = buildRequestedItemMap(skus);
+    	ConcurrentHashMap<String,Integer> requestedItems = buildRequestedItemMap(skus);
     	//Populate Item Price
     	HashMap<String,Integer> itemPriceTable =  createItemPriceTable();
     	
@@ -26,7 +27,7 @@ public class CheckoutSolution {
     	return totalPrice;
     }
     
-    private boolean validateInput(HashMap<String,Integer> requestedItems,HashMap<String,Integer> itemPriceTable) {
+    private boolean validateInput(ConcurrentHashMap<String,Integer> requestedItems,HashMap<String,Integer> itemPriceTable) {
     	boolean isValid = true;
     	
     	for (String item : requestedItems.keySet()) {
@@ -172,8 +173,8 @@ public class CheckoutSolution {
     	
     }
     
-    private HashMap<String,Integer> buildRequestedItemMap(String items){
-    	HashMap<String,Integer> requestedItems = new HashMap<String,Integer>();
+    private ConcurrentHashMap<String,Integer> buildRequestedItemMap(String items){
+    	ConcurrentHashMap<String,Integer> requestedItems = new ConcurrentHashMap<String,Integer>();
     	
     	//Create list of items and quantities requested
     	char[] itemArray = items.toCharArray();
@@ -190,7 +191,7 @@ public class CheckoutSolution {
     }
     
     
-    private Integer calculateTotalPrice(HashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, 
+    private Integer calculateTotalPrice(ConcurrentHashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, 
     		HashMap<String, List<PriceOffer>> priceOfferMap, HashMap<String, List<FreeItemOffer>> freeItemOfferMap) {
     	
     	HashMap<String, Integer> itemWiseTotalPrice = new HashMap<String, Integer>();
@@ -423,6 +424,42 @@ class ComboOffer {
 	}
 	
 }
+
+class ComboOfferItem {
+	
+	private String itemName;
+	private int itemQuantity;
+	private Integer itemPrice;
+	
+	
+	public ComboOfferItem(String itemName, int itemQuantity, Integer itemPrice) {
+		super();
+		this.itemName = itemName;
+		this.itemQuantity = itemQuantity;
+		this.itemPrice = itemPrice;
+	}
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	public int getItemQuantity() {
+		return itemQuantity;
+	}
+	public void setItemQuantity(int itemQuantity) {
+		this.itemQuantity = itemQuantity;
+	}
+	public Integer getItemPrice() {
+		return itemPrice;
+	}
+	public void setItemPrice(Integer itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+	
+	
+}
+
 
 
 
