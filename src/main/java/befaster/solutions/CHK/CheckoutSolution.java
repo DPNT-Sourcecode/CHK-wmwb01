@@ -16,6 +16,9 @@ public class CheckoutSolution {
     	// Validate Input
     	if(!validateInput(requestedItems, itemPriceTable))
     		return -1;
+    	//Create list of items which are under combo offer
+    	ComboOffer comboOffer = new ComboOffer("STXYZ",3,45);
+    	List<ComboOfferItem> comboOfferItemList = buildRequestedComboItemList(requestedItems, comboOffer, itemPriceTable);
     	
     	//Populate Item offers
     	HashMap<String, List<PriceOffer>> priceOfferMap = createPriceOfferMap();
@@ -188,6 +191,23 @@ public class CheckoutSolution {
     		
     	}
     	return requestedItems;
+    }
+    
+    private List<ComboOfferItem> buildRequestedComboItemList(ConcurrentHashMap<String,Integer> requestedItems,ComboOffer comboOffer,HashMap<String,Integer> itemPriceTable) {
+    	List<ComboOfferItem> comboOfferItemList = new ArrayList<ComboOfferItem>();
+    	
+    	ComboOfferItem comboOfferItem = null;
+    	for(String key :requestedItems.keySet()) {
+    		//If requestedItem is part of combo offer, add it in combooffer list
+    		if(comboOffer.getComboItems().contains(key)) {
+    			comboOfferItem = new ComboOfferItem(key, requestedItems.get(key),itemPriceTable.get(key));
+    			comboOfferItemList.add(comboOfferItem);
+    			//Remove item from original requsted map, so price will not be calculated again
+    			requestedItems.remove(key);
+    		}
+    	}
+    	return comboOfferItemList;
+    	
     }
     
     
@@ -459,6 +479,7 @@ class ComboOfferItem {
 	
 	
 }
+
 
 
 
