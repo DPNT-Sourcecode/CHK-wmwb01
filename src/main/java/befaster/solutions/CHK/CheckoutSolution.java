@@ -28,6 +28,7 @@ public class CheckoutSolution {
     	
     	// Calculate total price
     	Integer totalPrice = calculateTotalPrice(requestedItems, itemPriceTable, priceOfferMap, freeItemOfferMap);
+    	totalPrice = totalPrice + calcuatePriceForComboItems(comboOffer, comboOfferItemList, totalPrice, itemPriceTable);
     	
     	return totalPrice;
     }
@@ -220,8 +221,25 @@ public class CheckoutSolution {
     	
     	//Get total number of combo items requested
     	int totalComboOfferItemQuantity = comboOfferItemList.stream().mapToInt(ComboOfferItem :: getItemQuantity).sum();
+    	
     	//Get total price
     	totalPrice = totalPrice + (totalComboOfferItemQuantity/totalComboOfferItemQuantity) * comboOfferPrice;
+    	int remainingQuantity = totalComboOfferItemQuantity%totalComboOfferItemQuantity;
+    	//Reverse collection, so that  lowest price items come at the top
+    	Collections.reverse(comboOfferItemList);
+    	for(ComboOfferItem comboOfferItem : comboOfferItemList) {
+    		
+    		if(comboOfferItem.getItemQuantity() >= remainingQuantity) {
+    			totalPrice = totalPrice + (itemPriceTable.get(comboOfferItem.getItemName()) * remainingQuantity);
+    			break;
+    			
+    		} else {
+    			totalPrice = totalPrice + (itemPriceTable.get(comboOfferItem.getItemName()) * comboOfferItem.getItemQuantity());
+    			remainingQuantity = remainingQuantity - comboOfferItem.getItemQuantity();
+    			
+    		}
+    			
+    	}
     	
     	
     	return totalPrice;
@@ -506,5 +524,6 @@ class ComboOfferItem implements Comparable<ComboOfferItem>{
 	
 	
 }
+
 
 
