@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,6 +20,7 @@ public class CheckoutSolution {
     	//Create list of items which are under combo offer
     	ComboOffer comboOffer = new ComboOffer("STXYZ",3,45);
     	List<ComboOfferItem> comboOfferItemList = buildRequestedComboItemList(requestedItems, comboOffer, itemPriceTable);
+    	Collections.sort(comboOfferItemList);
     	
     	//Populate Item offers
     	HashMap<String, List<PriceOffer>> priceOfferMap = createPriceOfferMap();
@@ -140,6 +142,7 @@ public class CheckoutSolution {
     }
     
     
+    
     private HashMap<String,List<FreeItemOffer>> createFreeItemOfferMap(){
     	
     	// populate offer of E
@@ -210,6 +213,21 @@ public class CheckoutSolution {
     	
     }
     
+    private Integer calcuatePriceForComboItems(ComboOffer comboOffer, List<ComboOfferItem> comboOfferItemList,Integer totalPrice, HashMap<String,Integer> itemPriceTable) {
+    	
+    	int comboOfferQuantity = comboOffer.getComboItemQuantity();
+    	Integer comboOfferPrice = comboOffer.getComboItemPrice();
+    	
+    	//Get total number of combo items requested
+    	int totalComboOfferItemQuantity = comboOfferItemList.stream().mapToInt(ComboOfferItem :: getItemQuantity).sum();
+    	//Get total price
+    	totalPrice = totalPrice + (totalComboOfferItemQuantity/totalComboOfferItemQuantity) * comboOfferPrice;
+    	
+    	
+    	return totalPrice;
+    }
+   
+    
     
     private Integer calculateTotalPrice(ConcurrentHashMap<String,Integer> requestedItems, HashMap<String,Integer> itemPriceTable, 
     		HashMap<String, List<PriceOffer>> priceOfferMap, HashMap<String, List<FreeItemOffer>> freeItemOfferMap) {
@@ -224,7 +242,10 @@ public class CheckoutSolution {
     		//Take requested quantity
     		int requestedQuantity = requestedItems.get(item);
     		
-    		// If there is free item on requested item
+    		// If there is free item on requested item{
+    		
+    		
+    		
     		if (freeItemOfferMap.containsKey(item)) {
     			// Get list of freeItemOffers
     			List<FreeItemOffer> listOfFreeItemOffers = freeItemOfferMap.get(item);
@@ -485,6 +506,7 @@ class ComboOfferItem implements Comparable<ComboOfferItem>{
 	
 	
 }
+
 
 
 
