@@ -223,8 +223,8 @@ public class CheckoutSolution {
     	int totalComboOfferItemQuantity = comboOfferItemList.stream().mapToInt(ComboOfferItem :: getItemQuantity).sum();
     	
     	//Get total price
-    	totalPrice = totalPrice + (totalComboOfferItemQuantity/totalComboOfferItemQuantity) * comboOfferPrice;
-    	int remainingQuantity = totalComboOfferItemQuantity%totalComboOfferItemQuantity;
+    	totalPrice = totalPrice + (totalComboOfferItemQuantity/comboOfferQuantity) * comboOfferPrice;
+    	int remainingQuantity = totalComboOfferItemQuantity%comboOfferQuantity;
     	//Reverse collection, so that  lowest price items come at the top
     	Collections.reverse(comboOfferItemList);
     	for(ComboOfferItem comboOfferItem : comboOfferItemList) {
@@ -524,6 +524,7 @@ class ComboOfferItem implements Comparable<ComboOfferItem>{
 	
 	
 }
+
 
 
 
